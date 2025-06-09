@@ -1,0 +1,47 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - app/
+    
+    # Ignore common Laravel patterns that trigger false positives
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+        - '#Property .* \(App\\Models\\.*\) does not accept default value of type null#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder#'
+        - '#Call to an undefined method Illuminate\\Database\\Query\\Builder#'
+        - '#Method .* should return .* but returns Illuminate\\Database\\Eloquent\\Model#'
+    
+    # Additional rules for better code quality
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false
+    
+    # Laravel specific configurations
+    parallel:
+        jobSize: 20
+        maximumNumberOfProcesses: 32
+        minimumNumberOfJobsPerProcess: 2
+    
+    # Symfony compatibility
+    symfony:
+        container_xml_path: bootstrap/cache/compiled.xml
+    
+    # Exclude directories that don't need analysis
+    excludePaths:
+        - bootstrap/cache/*
+        - storage/*
+        - vendor/*
+        - node_modules/*
+        
+    # Custom Laravel stubs
+    stubFiles:
+        - stubs/eloquent.stub
+        
+    earlyTerminatingMethodCalls:
+        App\Exceptions\Handler:
+            - abort
+            - dd
+            - dump 

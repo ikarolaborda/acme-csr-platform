@@ -1,0 +1,10 @@
+services:
+  node:
+    container_name: acme_csr_node_build
+    command: sh -c "npm install && npm run build && echo 'Assets built successfully' && sleep infinity"
+    ports: []
+
+  app:
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false 
