@@ -390,11 +390,4 @@ kubectl apply -f k8s/
 
 ## 📄 License
 
-This project is proprietary software owned by ACME Corp. All rights reserved.
-
-## 👥 Support
-
-For technical support or questions:
-- **Email**: dev-team@acme-corp.com
-- **Slack**: #csr-platform-support
-- **Documentation**: [Internal Wiki](https://wiki.acme-corp.com/csr-platform)
+This project is fictional and provided for educational purposes only. may contain bugs
